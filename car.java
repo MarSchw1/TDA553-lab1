@@ -3,7 +3,7 @@ import java.awt.*;
 public abstract class car {
     //Bör alla vara privata för att inte kunna ändras direkt av användaren. De är specifika för bilarna.
     private int nrDoors;
-    private double enginePower;
+    protected double enginePower;
     private double currentSpeed;
     private Color color;
     private String modelName;
