@@ -21,12 +21,4 @@ public class Saab95 extends car{
         return enginePower * 0.01 * turbo;
     }
 
-    public void gas(double amount) {
-        incrementSpeed(amount);
-    }
-
-    public void brake(double amount) {
-        decrementSpeed(amount);
-    }
-
 }
