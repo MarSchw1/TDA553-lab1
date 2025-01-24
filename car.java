@@ -51,7 +51,7 @@ public abstract class car {
         }
         decrementSpeed(amount);
     }
-}
+
 
     public void move() {
         if (direction == 0) {
