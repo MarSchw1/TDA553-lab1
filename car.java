@@ -1,10 +1,10 @@
 import java.awt.*;
 
-public abstract class car {
+public abstract class car implements movable {
     //Bör alla vara privata för att inte kunna ändras direkt av användaren. De är specifika för bilarna.
     private int nrDoors;
     protected double enginePower;
-    private double currentSpeed;
+    protected double currentSpeed; // satte denna till protected för att kunna sätta faten direkt i testerna
     private Color color;
     private String modelName;
     protected int direction = 0;
