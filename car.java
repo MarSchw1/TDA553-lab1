@@ -12,6 +12,9 @@ public abstract class car implements movable {
     protected double y = 0;
 
     public car(int nrDoors, double enginePower, Color color, String modelName){
+        if (enginePower <= 0) {
+            throw new IllegalArgumentException("Engine power must be positive.");
+        }
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
