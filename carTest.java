@@ -23,8 +23,6 @@ public class carTest {
         saab.stopEngine();
         saab.setTurboOff();
         volvo.stopEngine();
-        volvo.x = 0; // bara så att vi nollställer bilen som vi testar move på.
-        volvo.y = 0;
     }
 
     @Test
@@ -108,7 +106,7 @@ public class carTest {
         volvo.currentSpeed = 1;
         volvo.turnRight();
         volvo.move();
-        assertEquals(1, volvo.x);
+        assertEquals(1, volvo.getX());
 
     }
 
@@ -117,7 +115,14 @@ public class carTest {
         volvo.currentSpeed = 1;
         volvo.turnLeft();
         volvo.move();
-        assertEquals(-1, volvo.x);
+        assertEquals(-1, volvo.getX());
+    }
+
+    @Test
+    void testMove() {
+        volvo.currentSpeed = 1;
+        volvo.move();
+        assertEquals(1, volvo.getY());
     }
 
     @Test
