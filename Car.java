@@ -1,10 +1,10 @@
 import java.awt.*;
 
-public abstract class car implements movable {
+public abstract class Car implements Movable {
     //Bör alla vara privata för att inte kunna ändras direkt av användaren. De är specifika för bilarna.
     private int nrDoors;
     protected double enginePower;
-    protected double currentSpeed; // satte denna till protected för att kunna sätta faten direkt i testerna
+    private double currentSpeed; // satte denna till protected för att kunna sätta faten direkt i testerna
     private Color color;
     private String modelName;
     private int direction = 0; // gör dessa privata ---
@@ -12,7 +12,7 @@ public abstract class car implements movable {
     private double y = 0;
 
     //Constructor
-    public car(int nrDoors, double enginePower, Color color, String modelName){
+    public Car(int nrDoors, double enginePower, Color color, String modelName){
         if (enginePower <= 0) {
             throw new IllegalArgumentException("Engine power must be positive.");
         }
@@ -20,55 +20,55 @@ public abstract class car implements movable {
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
-        stopEngine();
+        StopEngine();
     }
 
     // Public getters
-    public int getNrDoors(){return nrDoors;}
-    public double getEnginePower(){return enginePower;}
-    public double getCurrentSpeed(){return currentSpeed;}
+    public int GetNrDoors(){return nrDoors;}
+    public double GetEnginePower(){return enginePower;}
+    public double GetCurrentSpeed(){return currentSpeed;}
 
-    public Color getColor(){return color;}
-    public void setColor(Color clr){color = clr;}
+    public Color GetColor(){return color;}
+    public void SetColor(Color clr){color = clr;}
 
     // Public functions for starting and stopping engine
-    public void startEngine(){currentSpeed = 0.1;}
-    public void stopEngine(){currentSpeed = 0;}
+    public void StartEngine(){currentSpeed = 0.1;}
+    public void StopEngine(){currentSpeed = 0;}
 
     // protected gömmer funktionerna från utsidan men gör de tillgängliga för subklasser.
     // abstract betyder att subklasser som ex volvo240 can använda denna funktion men att de definierar den unik för varje "fordon".
 
     // abstract function for determining the speedFactor
-    protected abstract double speedFactor();
+    protected abstract double SpeedFactor();
 
     // protected function for incrementing a cars currentSpeed.
-    protected void incrementSpeed(double amount){
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);
+    protected void IncrementSpeed(double amount){
+        currentSpeed = Math.min(GetCurrentSpeed() + SpeedFactor() * amount,enginePower);
     }
 
     // protected function for decreasing a cars currentSpeed.
-    protected void decrementSpeed(double amount) {
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+    protected void DecrementSpeed(double amount) {
+        currentSpeed = Math.max(GetCurrentSpeed() - SpeedFactor() * amount, 0);
     }
 
     // public method for increasing currentSpeed
-    public void gas(double amount) {
+    public void Gas(double amount) {
         if (amount < 0 || amount > 1) {
             throw new IllegalArgumentException("Not accepted amount for gas, insert a value between 0 and 1");
         }
-        incrementSpeed(amount);
+        IncrementSpeed(amount);
     }
     // public method i decrease currentSpeed
-    public void brake(double amount) {
+    public void Brake(double amount) {
         if (amount < 0 || amount > 1) {
             throw new IllegalArgumentException("Not accepted amount break, insert a value between 0 and 1");
         }
-        decrementSpeed(amount);
+        DecrementSpeed(amount);
     }
 
     // Changes the coordinate doubles according to the cars direction and currentSpeed.
     // O = North, 1 = East, 2 = South, 3 = West
-    public void move() {
+    public void Move() {
         if (direction == 0) {
             y += currentSpeed;
         } else if (direction == 1) {
@@ -83,17 +83,17 @@ public abstract class car implements movable {
     }
 
     // turnRight makes the car by incrementing the cars direction-variable
-    public void turnRight() {
+    public void TurnRight() {
         direction = (direction + 1) % 4;
     }
 
     // turnLeft makes the car by incrementing the cars direction-variable
-    public void turnLeft() {
+    public void TurnLeft() {
         direction = (direction + 3) % 4;
     }
 
-    public double getX() {return x;}
+    public double GetX() {return x;}
 
-    public double getY() {return y;}
+    public double GetY() {return y;}
 }
 
