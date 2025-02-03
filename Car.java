@@ -69,16 +69,18 @@ public abstract class Car implements Movable {
     // Changes the coordinate doubles according to the cars direction and currentSpeed.
     // O = North, 1 = East, 2 = South, 3 = West
     public void Move() {
-        if (direction == 0) {
-            y += currentSpeed;
-        } else if (direction == 1) {
-            x += currentSpeed;
-        } else if (direction == 2) {
-            y -= currentSpeed;
-        } else if (direction == 3) {
-            x -= currentSpeed;
-        } else {
-            throw new IllegalStateException("Not a valid direction (0, 1, 2, 3)");
+        switch(direction){
+            case 0:
+                y += currentSpeed;
+                break;
+            case 1:
+                x += currentSpeed;
+                break;
+            case 2:
+                y -= currentSpeed;
+                break;
+            case 3:
+                x -= currentSpeed;
         }
     }
 
