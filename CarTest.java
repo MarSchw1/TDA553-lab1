@@ -64,28 +64,6 @@ public class CarTest {
     }
 
     @Test
-    void TestIncrementSpeed() {
-        saab.StartEngine();
-        double oldSpeed = saab.GetCurrentSpeed();
-        saab.IncrementSpeed(1);
-        double newSpeed = saab.GetCurrentSpeed();
-        assertTrue(oldSpeed < newSpeed);
-
-    }
-
-    @Test
-    void TestDecrementSpeed() {
-        saab.StartEngine();
-        for (int i = 1; i<5; i++){
-            saab.IncrementSpeed(1);
-        }
-        double oldSpeed = saab.GetCurrentSpeed();
-        saab.DecrementSpeed(0.5);
-        double newSpeed = saab.GetCurrentSpeed();
-        assertTrue(oldSpeed > newSpeed);
-    }
-
-    @Test
     void TestGas() {
         saab.StopEngine();
         double oldSpeed = saab.GetCurrentSpeed();
@@ -98,7 +76,7 @@ public class CarTest {
     void TestBrake() {
         saab.StartEngine();
         for (int i = 1; i<5; i++){
-            saab.IncrementSpeed(1);
+            saab.Gas(1);
         }
         double oldSpeed = saab.GetCurrentSpeed();
         saab.Brake(1);

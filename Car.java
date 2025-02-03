@@ -42,12 +42,12 @@ public abstract class Car implements Movable {
     protected abstract double SpeedFactor();
 
     // protected function for incrementing a cars currentSpeed.
-    protected void IncrementSpeed(double amount){
+    private void IncrementSpeed(double amount){
         currentSpeed = Math.min(GetCurrentSpeed() + SpeedFactor() * amount,enginePower);
     }
 
     // protected function for decreasing a cars currentSpeed.
-    protected void DecrementSpeed(double amount) {
+    private void DecrementSpeed(double amount) {
         currentSpeed = Math.max(GetCurrentSpeed() - SpeedFactor() * amount, 0);
     }
 
