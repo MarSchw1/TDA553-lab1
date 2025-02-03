@@ -8,8 +8,8 @@ public abstract class Car implements Movable {
     private Color color;
     private String modelName;
     private int direction = 0; // gör dessa privata ---
-    private double x = 0;
-    private double y = 0;
+    protected double x = 0;
+    protected double y = 0;
 
     //Constructor
     public Car(int nrDoors, double enginePower, Color color, String modelName){
