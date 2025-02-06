@@ -4,7 +4,7 @@ import java.awt.*;
 import java.security.PublicKey;
 import java.util.ArrayList;
 
-public class CarTransport extends Truck {
+public class CarTransport extends Car implements HasPlatform {
 private boolean platformUp;
 private ArrayList<Car> cars;
 private int maxCapacity;
@@ -31,13 +31,13 @@ private int maxCapacity;
         return inReach;
     };
 
-    public void RaisePlatform() {
+    public void raisePlatform() {
         if (GetCurrentSpeed() == 0) {
             platformUp = true;
         }
     }
 
-    public void LowerPlatform() {
+    public void lowerPlatform() {
         if (GetCurrentSpeed() == 0) {
             platformUp = false;
         }
