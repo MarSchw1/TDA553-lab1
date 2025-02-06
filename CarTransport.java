@@ -4,11 +4,24 @@ import java.awt.*;
 import java.security.PublicKey;
 import java.util.ArrayList;
 
-public class CarTransport extends Car implements HasPlatform {
+interface Load<T> {
+    void load(T t);
+}
+
+class CarCollection<T> implements Load<T> {
+
+}
+
+public class CarTransport extends Car implements HasPlatform, Load<Car> {
 private boolean platformUp;
 private ArrayList<Car> cars;
 private int maxCapacity;
 
+CarCollection collection;
+
+void load(Car car) {
+    collection.load(car);
+}
 
     public CarTransport() {
         super(2, 700, Color.white, "CarTransport");
