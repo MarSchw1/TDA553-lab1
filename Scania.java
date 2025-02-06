@@ -22,3 +22,4 @@ public class Scania extends Truck{
         return enginePower * 0.01;
     }
 }
+
