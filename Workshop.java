@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Workshop<T extends Car>{
-    private ArrayList<T> cars;
-    private int capacity;
+    private final ArrayList<T> cars;
+    private final int capacity;
 
     public Workshop(int capacity){
         this.cars = new ArrayList<>();

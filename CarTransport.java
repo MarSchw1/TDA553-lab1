@@ -61,6 +61,19 @@ private int maxCapacity;
 
     @Override
     public void Move() {
+        if (platformUp){
+            super.Move();
+        }
+    }
 
+    @Override
+    public void StartEngine() {
+        if (platformUp){
+            super.StartEngine();
+        }
+        for (Car car : cars){
+            car.SetX(this.GetX());
+            car.SetY(this.GetY());
+        }
     }
 }
