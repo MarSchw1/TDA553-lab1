@@ -6,7 +6,7 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CarTest {
+public class VehicleTest {
     private Saab95 saab;
     private Volvo240 volvo; // måste ha med två ilika för att testa turbo och om trimfactor fungerar som den ska
 

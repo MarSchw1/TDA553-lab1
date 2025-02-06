@@ -1,16 +1,13 @@
-import com.sun.jdi.connect.Transport;
-
 import java.awt.*;
-import java.security.PublicKey;
 import java.util.ArrayList;
 
-public class CarTransport extends Car implements HasPlatform {
+public class VehicleTransport extends Truck implements Load<Car> {
 private boolean platformUp;
 private ArrayList<Car> cars;
 private int maxCapacity;
 
 
-    public CarTransport() {
+    public VehicleTransport() {
         super(2, 700, Color.white, "CarTransport");
         platformUp = true;
         maxCapacity = 8;
@@ -21,7 +18,7 @@ private int maxCapacity;
         return GetEnginePower() * 0.01;
     }
 
-    private boolean IsCarInReach(Car other){
+    private boolean IsCarInReach(Vehicle other){
         boolean inReach = false;
         double x1 = this.GetX() - other.GetX();
         double y1 = this.GetY() - other.GetY();
@@ -42,20 +39,20 @@ private int maxCapacity;
             platformUp = false;
         }
     }
-
-    public void LoadCar (Car car) {
-        if (GetCurrentSpeed() == 0 && IsCarInReach(car) && !platformUp  && (cars.size() < maxCapacity) && car.getClass() != CarTransport.class) {
+    @Override
+    public void load (Car car) {
+        if (GetCurrentSpeed() == 0 && IsCarInReach(car) && !platformUp  && (cars.size() < maxCapacity)) {
             cars.add(car);
             car.SetX(GetX());
             car.SetY(GetY());
         }
     }
 
-    public void UnloadCar () {
+    public void unload () {
         if (!platformUp) {
-            Car car = cars.removeLast();
-            car.SetX(GetX() - 1);
-            car.SetY(GetY() - 1);
+            Vehicle vehicle = cars.removeLast();
+            vehicle.SetX(GetX() - 1);
+            vehicle.SetY(GetY() - 1);
         }
     }
 
@@ -71,9 +68,9 @@ private int maxCapacity;
         if (platformUp){
             super.StartEngine();
         }
-        for (Car car : cars){
-            car.SetX(this.GetX());
-            car.SetY(this.GetY());
+        for (Vehicle vehicle : cars){
+            vehicle.SetX(this.GetX());
+            vehicle.SetY(this.GetY());
         }
     }
 }
