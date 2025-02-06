@@ -4,14 +4,14 @@ public abstract class Car implements Movable {
     //Bör alla vara privata för att inte kunna ändras direkt av användaren. De är specifika för bilarna.
     private int nrDoors;
     // ska vara private
-    protected double enginePower;
+    private double enginePower;
     private double currentSpeed; // satte denna till protected för att kunna sätta faten direkt i testerna
     private Color color;
     private String modelName;
     private int direction = 0; // gör dessa privata ---
     // dessa ska vara private
-    protected double x = 0;
-    protected double y = 0;
+    private double x = 0;
+    private double y = 0;
 
     //Constructor
     public Car(int nrDoors, double enginePower, Color color, String modelName){
@@ -101,11 +101,11 @@ public abstract class Car implements Movable {
     public double GetY() {return y;}
 
     // eller protected??
-    public void setX(double newX){
+    public void SetX(double newX){
         x = newX;
     }
 
-    public void setY(double newY){
+    public void SetY(double newY){
         y = newY;
     }
 

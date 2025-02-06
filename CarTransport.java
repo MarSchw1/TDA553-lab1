@@ -18,7 +18,7 @@ private int maxCapacity;
     }
     @Override
     protected double SpeedFactor() {
-        return enginePower * 0.01;
+        return GetEnginePower() * 0.01;
     }
 
     private boolean IsCarInReach(Car other){
@@ -46,16 +46,16 @@ private int maxCapacity;
     public void LoadCar (Car car) {
         if (GetCurrentSpeed() == 0 && IsCarInReach(car) && !platformUp  && (cars.size() < maxCapacity) && car.getClass() != CarTransport.class) {
             cars.add(car);
-            car.x = GetX();
-            car.y = GetY();
+            car.SetX(GetX());
+            car.SetY(GetY());
         }
     }
 
     public void UnloadCar () {
         if (!platformUp) {
             Car car = cars.removeLast();
-            car.x = GetX() - 1;
-            car.y = GetY() - 1;
+            car.SetX(GetX() - 1);
+            car.SetY(GetY() - 1);
         }
     }
 
