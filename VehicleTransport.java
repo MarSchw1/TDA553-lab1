@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class VehicleTransport extends Truck implements Load<Car> {
 private boolean platformUp;
-private ArrayList<Car> cars;
+private CarCollection cars;
 private int maxCapacity;
 
 
@@ -11,7 +11,7 @@ private int maxCapacity;
         super(2, 700, Color.white, "CarTransport");
         platformUp = true;
         maxCapacity = 8;
-        cars = new ArrayList<>(maxCapacity);
+        cars = new CarCollection(maxCapacity);
     }
     @Override
     protected double SpeedFactor() {
@@ -41,8 +41,8 @@ private int maxCapacity;
     }
     @Override
     public void load (Car car) {
-        if (GetCurrentSpeed() == 0 && IsCarInReach(car) && !platformUp  && (cars.size() < maxCapacity)) {
-            cars.add(car);
+        if (GetCurrentSpeed() == 0 && IsCarInReach(car) && !platformUp  && (cars.getSize() < maxCapacity)) {
+            cars.load(car);
             car.SetX(GetX());
             car.SetY(GetY());
         }
@@ -50,7 +50,7 @@ private int maxCapacity;
 
     public void unload () {
         if (!platformUp) {
-            Vehicle vehicle = cars.removeLast();
+            Vehicle vehicle = cars.unloadLast();
             vehicle.SetX(GetX() - 1);
             vehicle.SetY(GetY() - 1);
         }
