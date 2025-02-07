@@ -1,10 +1,10 @@
 import java.awt.*;
 
-public class Scania extends Car implements HasPlatform{
+public class Scania extends Vehicle implements HasPlatform{
     private double angle;
 
     public Scania () {
-        super(2, 100, Color.white, "Scania");
+        super(2, 100, Color.white, "Scania", false);
     }
 
     public double getAngle(){

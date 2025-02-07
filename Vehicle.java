@@ -1,6 +1,7 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
-public abstract class Car implements Movable {
+public abstract class Vehicle implements Movable {
     //Bör alla vara privata för att inte kunna ändras direkt av användaren. De är specifika för bilarna.
     private int nrDoors;
     // ska vara private
@@ -12,9 +13,10 @@ public abstract class Car implements Movable {
     // dessa ska vara private
     private double x = 0;
     private double y = 0;
+    private Boolean loadble;
 
     //Constructor
-    public Car(int nrDoors, double enginePower, Color color, String modelName){
+    public Vehicle(int nrDoors, double enginePower, Color color, String modelName, Boolean loadble) {
         if (enginePower <= 0) {
             throw new IllegalArgumentException("Engine power must be positive.");
         }
@@ -108,6 +110,8 @@ public abstract class Car implements Movable {
     public void SetY(double newY){
         y = newY;
     }
+
+    protected Boolean isLoadble(){return loadble;}
 
 }
 

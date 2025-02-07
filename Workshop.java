@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Workshop<T extends Car>{
+public class Workshop<T extends Vehicle>{
     private final ArrayList<T> cars;
     private final int capacity;
 
