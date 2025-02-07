@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class CarCollection implements Load<Vehicle>, Iterable<Vehicle>{
-    private ArrayList<Vehicle> collection;
+public class CarCollection<T extends Vehicle> implements Iterable<T>{
+    private ArrayList<T> collection;
 
     public CarCollection(int capacity){
         collection = new ArrayList<>(capacity);
@@ -12,13 +12,8 @@ public class CarCollection implements Load<Vehicle>, Iterable<Vehicle>{
         return collection.size();
     }
 
-    @Override
-    public void load(Vehicle v){
-        collection.add(v);
-    }
-
-    @Override
-    public void unload() {
+    public void load(T t) {
+        collection.add(t);
     }
 
     public Vehicle unloadFirst(){
@@ -30,7 +25,7 @@ public class CarCollection implements Load<Vehicle>, Iterable<Vehicle>{
     }
 
     @Override
-    public Iterator<Vehicle> iterator() {
+    public Iterator<T> iterator() {
         return collection.iterator();
     }
 }

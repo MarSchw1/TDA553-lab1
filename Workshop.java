@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public class Workshop<T extends Vehicle> implements Load<T>{
-    private final CarCollection cars;
+    private final CarCollection<T> cars;
     private final int capacity;
 
     public Workshop(int capacity){
-        this.cars = new CarCollection(capacity);
+        this.cars = new CarCollection<>(capacity);
         this.capacity = capacity;
     }
 

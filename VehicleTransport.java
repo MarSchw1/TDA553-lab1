@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class VehicleTransport extends Truck implements Load<Car> {
 private boolean platformUp;
-private CarCollection cars;
+private CarCollection<Car> cars;
 private int maxCapacity;
 
 
