@@ -1,3 +1,3 @@
 public interface Loads <T> {
-    void load();
+    void load(T t);
 }

@@ -9,13 +9,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class VehicleTest {
     private Saab95 saab;
     private Volvo240 volvo; // måste ha med två ilika för att testa turbo och om trimfactor fungerar som den ska
-
+    private Scania scania;
+    private VehicleTransport vehicleTransport;
 
 
     @BeforeEach
     void SetUp() {
         saab = new Saab95();
         volvo = new Volvo240();
+        scania = new Scania();
+        vehicleTransport = new VehicleTransport(2);
     }
 
     @AfterEach // Känns som om det kan bli fel i olika test ifall motorn förblir på från ett annat test...
@@ -127,4 +130,73 @@ public class VehicleTest {
         double newSpeedFactor = saab.SpeedFactor();
         assertTrue(oldSpeedFactor > newSpeedFactor);
     }
+
+    @Test
+    void TestRaiseScania(){
+        scania.raisePlatform();
+        assertEquals(70, scania.getAngle());
+    }
+
+    @Test
+    void TestLowerScania(){
+        scania.raisePlatform(50);
+        scania.lowerPlatform();
+        assertEquals(0, scania.getAngle());
+    }
+
+    @Test
+    void TestDoubleRaiseAndLowerScania(){
+        scania.raisePlatform(10);
+        scania.lowerPlatform(5);
+        assertEquals(5, scania.getAngle());
+    }
+
+    @Test
+    void TestScaniaDriveWithRaisedPlatform(){
+        scania.raisePlatform(10);
+        scania.StartEngine();
+        assertEquals(0, scania.GetCurrentSpeed());
+    }
+
+    @Test
+    void TestTransportRaisPlatform(){
+        vehicleTransport.lowerPlatform();
+        vehicleTransport.raisePlatform();
+        assertTrue(vehicleTransport.GetPlatformStatus());
+    }
+
+    @Test
+    void TestCantMoveTransport(){
+        vehicleTransport.lowerPlatform();
+        vehicleTransport.StopEngine();
+        assertEquals(0, vehicleTransport.GetCurrentSpeed());
+    }
+
+    //Tests if it's possible to load cars in reach and not ones out of reach
+    @Test
+    void TestTransporterInReachLoad(){
+        volvo.StartEngine();
+        volvo.Gas(1);
+        volvo.Move();
+        saab.StartEngine();
+        saab.Gas(1);
+        saab.Move();
+        saab.Move();
+        vehicleTransport.lowerPlatform();
+        vehicleTransport.load(volvo);
+        vehicleTransport.load(saab);
+
+        assertEquals(1, vehicleTransport.GetNrCars());
+    }
+
+    @Test
+    void TestCarsMoveOnPlatform(){
+        vehicleTransport.lowerPlatform();
+        vehicleTransport.load(volvo);
+        vehicleTransport.StopEngine();
+        vehicleTransport.Move();
+        assertEquals(vehicleTransport.GetY(), volvo.GetY());
+    }
+
+
 }

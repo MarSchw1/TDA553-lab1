@@ -1,17 +1,17 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class VehicleTransport extends Vehicle implements HasPlatform {
+public class VehicleTransport extends Vehicle implements HasPlatform, Loads<Vehicle> {
 private boolean platformUp;
 private ArrayList<Vehicle> vehicles;
 private int maxCapacity;
 
 
-    public VehicleTransport() {
+    public VehicleTransport(int maxCapacity) {
         super(2, 700, Color.white, "CarTransport", false);
         platformUp = true;
-        maxCapacity = 8;
         vehicles = new ArrayList<>(maxCapacity);
+        this.maxCapacity = maxCapacity;
     }
     @Override
     protected double SpeedFactor() {
@@ -40,8 +40,9 @@ private int maxCapacity;
         }
     }
 
-    public void LoadCar (Vehicle vehicle) {
-        if (GetCurrentSpeed() == 0 && IsCarInReach(vehicle) && !platformUp  && (vehicles.size() < maxCapacity) && vehicle.isLoadble()) {
+    public void load (Vehicle vehicle) {
+        if (this.GetCurrentSpeed() == 0 && IsCarInReach(vehicle) && !platformUp  && (vehicles.size() < maxCapacity) && vehicle.isLoadble()) {
+            vehicle.StopEngine();
             vehicles.add(vehicle);
             vehicle.SetX(GetX());
             vehicle.SetY(GetY());
@@ -54,6 +55,10 @@ private int maxCapacity;
             vehicle.SetX(GetX() - 1);
             vehicle.SetY(GetY() - 1);
         }
+    }
+
+    public int GetNrCars(){
+        return vehicles.size();
     }
 
     @Override
@@ -72,5 +77,9 @@ private int maxCapacity;
             vehicle.SetX(this.GetX());
             vehicle.SetY(this.GetY());
         }
+    }
+
+    public boolean GetPlatformStatus(){
+        return platformUp;
     }
 }
