@@ -1,7 +1,6 @@
 import java.awt.*;
-import java.util.ArrayList;
 
-public class VehicleTransport extends Truck implements Load<Car> {
+public class VehicleTransport extends Truck implements Loadable<Car> {
 private boolean platformUp;
 private CarCollection<Car> cars;
 private int maxCapacity;

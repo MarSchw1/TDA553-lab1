@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-
-public class Workshop<T extends Vehicle> implements Load<T>{
+public class Workshop<T extends Vehicle> implements Loadable<T> {
     private final CarCollection<T> cars;
     private final int capacity;
 
