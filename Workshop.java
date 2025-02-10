@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Workshop<T extends Vehicle>{
+public class Workshop<T extends Vehicle> implements Loads <T>{
     private final ArrayList<T> cars;
     private final int capacity;
 
@@ -9,7 +9,8 @@ public class Workshop<T extends Vehicle>{
         this.capacity = capacity;
     }
 
-    public void addCar(T car){
+    @Override
+    public void load(T car){
         if (cars.size() < capacity) {
             cars.add(car);
         }
