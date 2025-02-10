@@ -44,6 +44,7 @@ private int maxCapacity;
         if (this.GetCurrentSpeed() == 0 && IsCarInReach(vehicle) && !platformUp  && (vehicles.size() < maxCapacity) && vehicle.isLoadble()) {
             vehicle.StopEngine();
             vehicles.add(vehicle);
+            vehicle.loaded = true;
             vehicle.SetX(GetX());
             vehicle.SetY(GetY());
         }
@@ -52,6 +53,7 @@ private int maxCapacity;
     public void UnloadCar () {
         if (!platformUp) {
             Vehicle vehicle = vehicles.removeLast();
+            vehicle.loaded = false;
             vehicle.SetX(GetX() - 1);
             vehicle.SetY(GetY() - 1);
         }

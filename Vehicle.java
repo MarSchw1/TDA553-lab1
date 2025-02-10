@@ -14,6 +14,7 @@ public abstract class Vehicle implements Movable {
     private double x = 0;
     private double y = 0;
     private boolean loadble;
+    protected boolean loaded;
 
     //Constructor
     public Vehicle(int nrDoors, double enginePower, Color color, String modelName, boolean loadble) {
@@ -37,7 +38,7 @@ public abstract class Vehicle implements Movable {
     public void SetColor(Color clr){color = clr;}
 
     // Public functions for starting and stopping engine
-    public void StartEngine(){currentSpeed = 0.1;}
+    public void StartEngine(){if (!loaded){currentSpeed = 0.1;}}
     public void StopEngine(){currentSpeed = 0;}
 
     // protected gömmer funktionerna från utsidan men gör de tillgängliga för subklasser.
@@ -74,7 +75,8 @@ public abstract class Vehicle implements Movable {
     // Changes the coordinate doubles according to the cars direction and currentSpeed.
     // O = North, 1 = East, 2 = South, 3 = West
     public void Move() {
-        switch(direction){
+        if (!loaded){
+        switch(direction) {
             case 0:
                 y += currentSpeed;
                 break;
@@ -86,7 +88,7 @@ public abstract class Vehicle implements Movable {
                 break;
             case 3:
                 x -= currentSpeed;
-        }
+        }}
     }
 
     // turnRight makes the car by incrementing the cars direction-variable

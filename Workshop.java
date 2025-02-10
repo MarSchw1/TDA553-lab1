@@ -11,13 +11,15 @@ public class Workshop<T extends Vehicle> implements Loads <T>{
 
     @Override
     public void load(T car){
+        car.loaded = true;
         if (cars.size() < capacity) {
             cars.add(car);
         }
     }
 
-    public void getCar(T car){
+    public void unload(T car){
         cars.remove(car);
+        car.loaded = false;
     }
 
     public int getNrOfCars(){
