@@ -17,7 +17,7 @@ public abstract class Vehicle implements Movable {
     protected boolean loaded;
 
     //Constructor
-    public Vehicle(int nrDoors, double enginePower, Color color, String modelName, boolean loadble) {
+    public Vehicle(int nrDoors, double enginePower, Color color, String modelName, boolean loadble, double x, double y ) {
         if (enginePower <= 0) {
             throw new IllegalArgumentException("Engine power must be positive.");
         }
@@ -26,6 +26,8 @@ public abstract class Vehicle implements Movable {
         this.color = color;
         this.modelName = modelName;
         this.loadble = loadble;
+        this.x = x;
+        this.y = y;
         StopEngine();
     }
 
@@ -101,6 +103,8 @@ public abstract class Vehicle implements Movable {
         direction = (direction + 3) % 4;
     }
 
+    public int getDirection() {return direction;}
+
     public double GetX() {return x;}
 
     public double GetY() {return y;}
@@ -116,5 +120,8 @@ public abstract class Vehicle implements Movable {
 
     protected boolean isLoadble(){return loadble;}
 
+    public String getModel() {
+        return modelName;
+    }
 }
 

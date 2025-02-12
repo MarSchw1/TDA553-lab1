@@ -4,7 +4,7 @@ public class Scania extends Vehicle implements HasPlatform{
     private double angle;
 
     public Scania () {
-        super(2, 100, Color.white, "Scania", false);
+        super(2, 80, Color.white, "Scania", false,0, 200);
     }
 
     public double getAngle(){

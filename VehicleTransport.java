@@ -8,7 +8,7 @@ private int maxCapacity;
 
 
     public VehicleTransport(int maxCapacity) {
-        super(2, 700, Color.white, "CarTransport", false);
+        super(2, 700, Color.white, "CarTransport", false, 0, 300);
         platformUp = true;
         vehicles = new ArrayList<>(maxCapacity);
         this.maxCapacity = maxCapacity;
