@@ -6,7 +6,7 @@ public abstract class Vehicle implements Movable {
     private int nrDoors;
     // ska vara private
     private double enginePower;
-    private double currentSpeed; // satte denna till protected för att kunna sätta faten direkt i testerna
+    private double currentSpeed;
     private Color color;
     private String modelName;
     private int direction = 0; // gör dessa privata ---
@@ -47,12 +47,12 @@ public abstract class Vehicle implements Movable {
     // abstract function for determining the speedFactor
     protected abstract double SpeedFactor();
 
-    // protected function for incrementing a cars currentSpeed.
+    // private function for incrementing a cars currentSpeed.
     private void IncrementSpeed(double amount){
         currentSpeed = Math.min(GetCurrentSpeed() + SpeedFactor() * amount,enginePower);
     }
 
-    // protected function for decreasing a cars currentSpeed.
+    // private function for decreasing a cars currentSpeed.
     private void DecrementSpeed(double amount) {
         currentSpeed = Math.max(GetCurrentSpeed() - SpeedFactor() * amount, 0);
     }
