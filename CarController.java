@@ -50,14 +50,15 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            int wx = (int) Math.round(volvo240Workshop.getX());
+            int wy = (int) Math.round(volvo240Workshop.getY());
+            frame.drawPanel.volvoWorkshopPoint.x = wx;
+            frame.drawPanel.volvoWorkshopPoint.y = wy;
+
             for (Vehicle car : cars) {
                 car.Move();
                 int x = (int) Math.round(car.GetX());
                 int y = (int) Math.round(car.GetY());
-                int wx = (int) Math.round(volvo240Workshop.getX());
-                int wy = (int) Math.round(volvo240Workshop.getY());
-
-
 
                 if ((x + 100) > wx && x < (wx + 100) &&
                         (y + 60) > wy && y < (wy + 100)) {

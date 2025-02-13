@@ -19,7 +19,8 @@ public class DrawPanel extends JPanel{
     Point scaniaPoint = new Point();
 
     BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(400,30);
+
+    Point volvoWorkshopPoint = new Point();
 
     // TODO: Make this general for all cars
     void moveit(Vehicle car, int x, int y){
@@ -35,6 +36,7 @@ public class DrawPanel extends JPanel{
             scaniaPoint.x = x;
             scaniaPoint.y = y;
         }
+
 
     }
 
