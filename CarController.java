@@ -63,6 +63,8 @@ public class CarController {
                         (y + 60) > wy && y < (wy + 100)) {
                     if (car instanceof Volvo240 volvo) {
                         volvo240Workshop.load(volvo);
+                        car.SetX(wx);
+                        car.SetY(wy);
                     }
                 }
 
