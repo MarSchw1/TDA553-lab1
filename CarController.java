@@ -25,6 +25,8 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<Vehicle> cars = new ArrayList<>();
 
+    Workshop<Volvo240> volvo240Workshop = new Workshop<Volvo240>(2,400,30);
+
     //methods:
 
     public static void main(String[] args) {
@@ -34,6 +36,7 @@ public class CarController {
         cc.cars.add(new Volvo240());
         cc.cars.add(new Saab95());
         cc.cars.add(new Scania());
+
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -51,16 +54,26 @@ public class CarController {
                 car.Move();
                 int x = (int) Math.round(car.GetX());
                 int y = (int) Math.round(car.GetY());
+                int wx = (int) Math.round(volvo240Workshop.getX());
+                int wy = (int) Math.round(volvo240Workshop.getY());
 
 
-                if(y > 560 - 60){
-                    car.SetY(500);
+
+                if ((x + 100) > wx && x < (wx + 100) &&
+                        (y + 60) > wy && y < (wy + 100)) {
+                    if (car instanceof Volvo240 volvo) {
+                        volvo240Workshop.load(volvo);
+                    }
+                }
+
+                if(x > 690){
+                    car.SetX(690);
                     car.StopEngine();
                     car.TurnRight();
                     car.TurnRight();
                     car.StartEngine();
-                } else if (y < 0) {
-                    car.SetY(0);
+                } else if (x < 0) {
+                    car.SetX(0);
                     car.StopEngine();
                     car.TurnRight();
                     car.TurnRight();

@@ -3,17 +3,23 @@ import java.util.ArrayList;
 public class Workshop<T extends Vehicle> implements Loads <T>{
     private final ArrayList<T> cars;
     private final int capacity;
+    private final double x;
+    private final double y;
 
-    public Workshop(int capacity){
+    public Workshop(int capacity, double x, double y) {
         this.cars = new ArrayList<>();
         this.capacity = capacity;
+        this.x = x;
+        this.y = y;
     }
 
     @Override
     public void load(T car){
-        car.loaded = true;
-        if (cars.size() < capacity) {
-            cars.add(car);
+        if (!car.loaded) {
+            if (cars.size() < capacity) {
+                car.loaded = true;
+                cars.add(car);
+            }
         }
     }
 
@@ -25,5 +31,14 @@ public class Workshop<T extends Vehicle> implements Loads <T>{
     public int getNrOfCars(){
         return cars.size();
     }
+
+    public double getX(){
+        return x;
+    }
+
+    public double getY(){
+        return y;
+    }
+
 
 }

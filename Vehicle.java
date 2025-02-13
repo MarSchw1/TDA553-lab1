@@ -9,15 +9,15 @@ public abstract class Vehicle implements Movable {
     private double currentSpeed;
     private Color color;
     private String modelName;
-    private int direction = 0; // gör dessa privata ---
+    private int direction = 1; // gör dessa privata ---
     // dessa ska vara private
     private double x = 0;
     private double y = 0;
-    private boolean loadble;
-    protected boolean loaded;
+    //private boolean loadble;
+    protected boolean loaded; // Skulle även kunna heta "canMove" för att kontrollera om en bil "kan" röra på sig. Mao. är den loadad eller inte.
 
     //Constructor
-    public Vehicle(int nrDoors, double enginePower, Color color, String modelName, boolean loadble, double x, double y ) {
+    public Vehicle(int nrDoors, double enginePower, Color color, String modelName, double x, double y ) {
         if (enginePower <= 0) {
             throw new IllegalArgumentException("Engine power must be positive.");
         }
@@ -25,7 +25,7 @@ public abstract class Vehicle implements Movable {
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
-        this.loadble = loadble;
+        //this.loadble = loadble;
         this.x = x;
         this.y = y;
         StopEngine();
@@ -118,7 +118,7 @@ public abstract class Vehicle implements Movable {
         y = newY;
     }
 
-    protected boolean isLoadble(){return loadble;}
+    //protected boolean isLoadble(){return loadble;}
 
     public String getModel() {
         return modelName;

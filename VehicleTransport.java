@@ -8,7 +8,7 @@ private int maxCapacity;
 
 
     public VehicleTransport(int maxCapacity) {
-        super(2, 700, Color.white, "CarTransport", false, 0, 300);
+        super(2, 700, Color.white, "CarTransport", 0, 300);
         platformUp = true;
         vehicles = new ArrayList<>(maxCapacity);
         this.maxCapacity = maxCapacity;
@@ -41,7 +41,7 @@ private int maxCapacity;
     }
 
     public void load (Vehicle vehicle) {
-        if (this.GetCurrentSpeed() == 0 && IsCarInReach(vehicle) && !platformUp  && (vehicles.size() < maxCapacity) && vehicle.isLoadble()) {
+        if (this.GetCurrentSpeed() == 0 && IsCarInReach(vehicle) && !platformUp  && (vehicles.size() < maxCapacity) && !(vehicle instanceof VehicleTransport)) {
             vehicle.StopEngine();
             vehicles.add(vehicle);
             vehicle.loaded = true;
