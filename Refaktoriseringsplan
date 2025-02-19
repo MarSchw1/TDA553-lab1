@@ -1,0 +1,5 @@
+1. Skapa ny klass VehicleFactory som skapar instanser av subklasserna till Vechicle 
+2. CarControll skapar Vehicles via VehicleFactory för att ta bort usage dependency på Volvo, Scania…
+3. Skapa en funktion updateCarPosition i CarView som anropar moveit och repaint i DrawPanel
+4. CarController anropar updateCarPosition för att ta bort usage dependency mellan CarController och DrawPanel
+5. Skapa en ny klass ActionController som sköter allt som ActionListener gör för att ta bort det dubbla beroendet mellan CarController och CarView 
