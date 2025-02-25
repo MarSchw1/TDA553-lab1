@@ -170,4 +170,9 @@ public class CarView extends JFrame{
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+    public void updateCarPosition(Vehicle car, int x, int y){
+        drawPanel.moveit(car, x, y);
+        drawPanel.repaint();
+    }
 }

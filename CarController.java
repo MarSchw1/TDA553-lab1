@@ -87,10 +87,10 @@ public class CarController {
                     car.StartEngine();
                 }
 
-
-                frame.drawPanel.moveit(car, x, y);
+                frame.updateCarPosition(car, x,y);
+                /* frame.drawPanel.moveit(car, x, y);
                 // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
+                frame.drawPanel.repaint(); */
             }
         }
     }
