@@ -90,4 +90,10 @@ public class Model {
             car.StopEngine();
         }
     }
+    void addVehicle(Vehicle vehicle) {
+        if (vehicles.size() < 10){
+            vehicles.add(vehicle);
+//            notifyObservers();
+        }
+    }
 }

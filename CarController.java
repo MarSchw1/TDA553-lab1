@@ -43,7 +43,7 @@ public class CarController {
 
 
         // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
+        cc.frame = new CarView();
 
         // Start the timer
         cc.timer.start();
@@ -127,6 +127,13 @@ public class CarController {
 
     void stopAllCars(){
         model.startAllCars();
+    }
+    void addVehicle(){
+        model.addVehicle();
+    }
+
+    void removeVehicle(){
+        model.removeVehicle();
     }
 
 

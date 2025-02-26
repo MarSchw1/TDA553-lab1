@@ -32,7 +32,7 @@ public class Widgets extends JFrame {
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
-    // Constructor
+    // Conswtructor
     public Widgets(String framename, CarController cc){
         this.carC = cc;
         initComponents(framename);
