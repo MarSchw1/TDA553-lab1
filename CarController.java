@@ -23,9 +23,9 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Vehicle> cars = new ArrayList<>();
+    ArrayList<Vehicle> cars = new ArrayList<>(); // Tillhör modell-delen
 
-    Workshop<Volvo240> volvo240Workshop = new Workshop<Volvo240>(2,400,30);
+    Workshop<Volvo240> volvo240Workshop = new Workshop<Volvo240>(2,400,30); // tillhör modellen
 
     //methods:
 
