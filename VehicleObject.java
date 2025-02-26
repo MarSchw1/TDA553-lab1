@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class VehicleObject implements drawable {
+public class VehicleObject implements Drawable {
     private Vehicle vehicle;
     private Point position;
     private BufferedImage image;

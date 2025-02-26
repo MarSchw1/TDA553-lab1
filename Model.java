@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.*;
 
 
 public class Model {
@@ -12,17 +11,35 @@ public class Model {
     private Timer timer = new Timer(delay, new TimerListener());
 
     // A list of cars, modify if needed
-    ArrayList<Vehicle> vehicles = new ArrayList<>(); // Tillhör modell-delen
+    ArrayList<VehicleObject> vehicles = new ArrayList<>(); // Tillhör modell-delen
 
     Workshop<Volvo240> volvo240Workshop = new Workshop<Volvo240>(2,400,30);
 
     ArrayList<ModelUpdateObserver> observers = new ArrayList<ModelUpdateObserver>();
 
     public Model() {
-        vehicles = new ArrayList<Vehicle>();
+        vehicles = new ArrayList<VehicleObject>();
         timer = new Timer(delay, new TimerListener());
         initObjects();
         startTimer();
+    }
+
+    public ArrayList<Drawable> getImages() {
+        ArrayList<Drawable> images = new ArrayList<>();
+        for (VehicleObject vo : vehicles) {
+            images.add(vo);
+        }
+        // TODO: Lägg till workshoppen  också. Kan behövas en WorkshopObejkt på samma sätt som för bilarna.
+        images.add(...)
+        return images;
+    }
+
+    public void initObjects(){
+        // TODO: Fixa så att VechicleFactory skapar VehicleObjects
+
+        addVehicle(VehicleFactory.createSaab());
+        addVehicle(VehicleFactory.createVolvo());
+        addVehicle(VehicleFactory.createScania());
     }
 
     private class TimerListener implements ActionListener {
@@ -40,8 +57,8 @@ public class Model {
     }
 
     private void updateModel() {
-        for (Vehicle vehicle : vehicles) {
-            vehicle.Move();
+        for (VehicleObject vehicle : vehicles) {
+            vehicle.move();
             tryLoading(vehicle);
             chekVehicleInFrame(vehicle);
             notifyObservers();
@@ -50,18 +67,17 @@ public class Model {
 
     private Workshop getWorkshop() { return volvo240Workshop;}
 
-    private void tryLoading(Vehicle vehicle) {
+    private void tryLoading(VehicleObject vehicle) {
         int wx = (int) Math.round(getWorkshop().getX());
         int wy = (int) Math.round(getWorkshop().getY());
-        int x = (int) Math.round(vehicle.GetX());
-        int y = (int) Math.round(vehicle.GetY());
+        int x = (int) Math.round(vehicle.getX());
+        int y = (int) Math.round(vehicle.getY());
 
         if ((x + 100) > wx && x < (wx + 100) &&
                 (y + 60) > wy && y < (wy + 100)) {
-            if (vehicle instanceof Volvo240 volvo) {
+            if (vehicle.getVehicle() instanceof Volvo240 volvo) {
                 volvo240Workshop.load(volvo);
-                vehicle.SetX(wx);
-                vehicle.SetY(wy);
+                vehicle.setPosition(wx,wy);
             }
         }
     }
@@ -79,11 +95,6 @@ public class Model {
             vehicle.StartEngine();
         }
     }
-    public void initObjects(){
-        addVehicle(VehicleFactory.createSaab());
-        addVehicle(VehicleFactory.createVolvo());
-        addVehicle(VehicleFactory.createScania());
-    }
 
     public void startTimer(){
         timer.start();
@@ -95,8 +106,8 @@ public class Model {
 
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Vehicle car : vehicles) {
-            car.Gas(gas);
+        for (VehicleObject vehicle : vehicles) {
+            vehicle.Gas(gas);
         }
     }
 
@@ -109,17 +120,17 @@ public class Model {
     }
 
     void setTurboOn() {
-        for (Vehicle car : vehicles) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOn();
+        for (VehicleObject vehicle : vehicles) {
+            if (vehicle.getVehicle() instanceof Saab95) {
+                ((Saab95) vehicle).setTurboOn();
             }
         }
     }
 
     void setTurboOff() {
-        for (Vehicle car : vehicles) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOff();
+        for (VehicleObject vehicle : vehicles) {
+            if (vehicle.getVehicle() instanceof Saab95) {
+                ((Saab95) vehicle).setTurboOff();
             }
         }
     }
