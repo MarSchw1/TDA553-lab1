@@ -118,6 +118,7 @@ public abstract class Vehicle implements Movable {
         y = newY;
     }
 
+    public void invertDirection() {direction = (direction - 1) % 4;}
     //protected boolean isLoadble(){return loadble;}
 
     public String getModel() {
