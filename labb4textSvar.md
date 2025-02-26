@@ -7,7 +7,7 @@
 * gas, brake etc. är alla medotder som hör till CarController men i  uvarande lösning känner de till bilarnas logik. CarController bör inte känna till detta så funktionerna bör kalla på modellen som utför själva handlingen inom modellns abgränsningar.
 
 ### CarView nu:
-* 
+* väldigt mycket knappar osv. Kan tunnas ut en del. 
 
 
 
