@@ -26,7 +26,7 @@ public class CarController {
     ArrayList<Vehicle> cars = new ArrayList<>(); // Tillhör modell-delen
 
     Workshop<Volvo240> volvo240Workshop = new Workshop<Volvo240>(2,400,30); // tillhör modellen
-
+    private Model model;
     //methods:
 
     public static void main(String[] args) {
@@ -97,63 +97,36 @@ public class CarController {
 
     // Calls the gas method for each car once
     void gas(int amount) {
-        double gas = ((double) amount) / 100;
-       for (Vehicle car : cars
-                ) {
-            car.Gas(gas);
-        }
+        model.gas(amount);
     }
 
     //calls the brake method for eavh car once
     void brake(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Vehicle car : cars) {
-            car.Brake(gas);
-        }
+        model.brake(amount);
     }
 
      void setTurboOn() {
-        for (Vehicle car : cars) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOn();
-            }
-        }
+        model.setTurboOn();
     }
 
     void setTurboOff() {
-        for (Vehicle car : cars) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOff();
-            }
-        }
+        model.setTurboOff();
     }
 
     void raiseBed() {
-        for (Vehicle vehicle : cars) {
-            if (vehicle instanceof Scania) {
-                ((Scania) vehicle).raisePlatform();
-            }
-        }
+        model.raiseBed();
     }
 
     void lowerBed() {
-        for (Vehicle vehicle : cars) {
-            if (vehicle instanceof Scania) {
-                ((Scania) vehicle).lowerPlatform();
-            }
-        }
+        model.lowerBed();
     }
 
     void startAllCars(){
-        for (Vehicle car : cars) {
-            car.StartEngine();
-        }
+        model.startAllCars();
     }
 
     void stopAllCars(){
-        for (Vehicle car : cars) {
-            car.StopEngine();
-        }
+        model.startAllCars();
     }
 
 
