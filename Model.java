@@ -30,19 +30,20 @@ public class Model {
         ArrayList<Drawable> images = new ArrayList<>();
         for (VehicleObject vehicleObject : vehicles) {
             images.add(vehicleObject);
-        }
-        // TODO: Lägg till workshoppen  också. Kan behövas en WorkshopObejkt på samma sätt som för bilarna.
+            }
         images.add(volvo240Workshop);
-
         return images;
     }
-
+    // initiates default vehicles in th model
     public void initObjects(){
         addVehicle(VehicleFactory.createSaab());
         addVehicle(VehicleFactory.createVolvo());
         addVehicle(VehicleFactory.createScania());
     }
 
+    /* Each step the TimerListener moves all the cars in the list and tells the
+       view to update its images. Change this method to your needs.
+     */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             updateModel();
@@ -117,7 +118,7 @@ public class Model {
     void brake(int amount) {
         double gas = ((double) amount) / 100;
         for (VehicleObject vehicleObject : vehicles) {
-            vehicleObject.getVehicle().Brake(gas);
+            vehicleObject.Brake(gas);
         }
     }
 
@@ -156,6 +157,7 @@ public class Model {
             vehicleObject.StopEngine();
         }
     }
+
     void addVehicle(VehicleObject vehicle) {
         if (vehicles.size() < 10){
             vehicles.add(vehicle);
