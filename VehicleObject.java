@@ -1,4 +1,3 @@
-import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -15,7 +14,7 @@ public class VehicleObject implements Drawable {
         this.x = (int) vehicle.GetX();
         this.y = (int) vehicle.GetY();
         try {
-            this.image = ImageIO.read(view.class.getResourceAsStream("pics/"+vehicle.getModel()+".jpg"));
+            this.image = ImageIO.read(View.class.getResourceAsStream("pics/"+vehicle.getModel()+".jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class view extends JPanel implements ModelUpdateObserver{
+public class View extends JPanel implements ModelUpdateObserver{
     private Model model;
     private ArrayList<Drawable> items = new ArrayList<Drawable>();
 
@@ -10,7 +10,7 @@ public class view extends JPanel implements ModelUpdateObserver{
         items = model.getImages();
         this.repaint();
     }
-public view(int x, int y, Model model){
+public View(int x, int y, Model model){
     this.model = model;
     this.setDoubleBuffered(true);
     this.setPreferredSize(new Dimension(x, y));
