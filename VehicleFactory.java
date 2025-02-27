@@ -14,4 +14,9 @@ public class VehicleFactory {
         return new VehicleObject(scania);
     }
 
+    public static WorkshopObject createVolvoWorkshop(int capacity, double x, double y){
+        Workshop<Volvo240> volvo240Workshop = new Workshop<Volvo240>(capacity, x, y);
+        return new WorkshopObject(volvo240Workshop);
+    }
+
 }

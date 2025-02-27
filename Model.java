@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +14,8 @@ public class Model {
     // A list of cars, modify if needed
     ArrayList<VehicleObject> vehicles = new ArrayList<>(); // Tillhör modell-delen
 
-    Workshop<Volvo240> volvo240Workshop = new Workshop<Volvo240>(2,400,30);
+    //Workshop<Volvo240> volvo240Workshop = new Workshop<Volvo240>(2,400,30);
+    WorkshopObject volvo240Workshop = VehicleFactory.createVolvoWorkshop(2,400,300);
 
     ArrayList<ModelUpdateObserver> observers = new ArrayList<ModelUpdateObserver>();
 
@@ -26,11 +28,12 @@ public class Model {
 
     public ArrayList<Drawable> getImages() {
         ArrayList<Drawable> images = new ArrayList<>();
-        for (VehicleObject vo : vehicles) {
-            images.add(vo);
+        for (VehicleObject vehicleObject : vehicles) {
+            images.add(vehicleObject);
         }
         // TODO: Lägg till workshoppen  också. Kan behövas en WorkshopObejkt på samma sätt som för bilarna.
-        images.add(...)
+        images.add(volvo240Workshop);
+
         return images;
     }
 
