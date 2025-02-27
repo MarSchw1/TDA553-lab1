@@ -12,7 +12,7 @@ public class Widgets extends JFrame {
     // The controller member
     CarController carC;
 
-    DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    // DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
     JPanel controlPanel = new JPanel();
 
@@ -28,18 +28,20 @@ public class Widgets extends JFrame {
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Lift Bed");
+    JButton addCar = new JButton("Add Car");
+    JButton removeCar = new JButton("Remove Car");
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
     // Conswtructor
-    public Widgets(String framename, CarController cc){
+    public Widgets(String framename, CarController cc, View drawpanel){
         this.carC = cc;
-        initComponents(framename);
+        initComponents(framename, drawpanel);
     }
 
     // Sets everything in place and fits everything
-    private void initComponents(String title) {
+    private void initComponents(String title, View drawPanel) {
 
         this.setTitle(title);
         this.setPreferredSize(new Dimension(X,Y));
@@ -75,6 +77,8 @@ public class Widgets extends JFrame {
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(addCar, 6);
+        controlPanel.add(removeCar, 7);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
@@ -145,6 +149,20 @@ public class Widgets extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 carC.stopAllCars();
+            }
+        });
+
+        addCar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.addCar();
+            }
+        });
+
+        removeCar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.removeCar();
             }
         });
 
