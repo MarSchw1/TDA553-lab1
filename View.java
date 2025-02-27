@@ -4,10 +4,10 @@ import javax.swing.*;
 
 public class View extends JPanel implements ModelUpdateObserver{
     private Model model;
-    private ArrayList<Drawable> items = new ArrayList<Drawable>();
+    private ArrayList<Drawable> objects = new ArrayList<Drawable>();
 
     public void OnModelUpdate() {
-        items = model.getImages();
+        objects = model.getImages();
         this.repaint();
     }
 public View(int x, int y, Model model){
@@ -20,7 +20,7 @@ public View(int x, int y, Model model){
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (Drawable item : items) {
+        for (Drawable item : objects) {
             g.drawImage(item.getImage(), item.getX(), item.getY(), null);
         }
     }
