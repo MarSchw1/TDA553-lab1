@@ -66,7 +66,7 @@ public class Model {
         }
     }
 
-    private Workshop getWorkshop() { return volvo240Workshop;}
+    private WorkshopObject getWorkshop() { return volvo240Workshop;}
 
     private void tryLoading(VehicleObject vehicle) {
         int wx = (int) Math.round(getWorkshop().getX());
@@ -77,7 +77,7 @@ public class Model {
         if ((x + 100) > wx && x < (wx + 100) &&
                 (y + 60) > wy && y < (wy + 100)) {
             if (vehicle.getVehicle() instanceof Volvo240 volvo) {
-                volvo240Workshop.load(volvo);
+                volvo240Workshop.getWorkshop().load(volvo);
                 vehicle.setX(wx);
                 vehicle.setY(wy);
             }
