@@ -6,29 +6,32 @@ import javax.imageio.ImageIO;
 
 public class VehicleObject implements Drawable {
     private Vehicle vehicle;
-    private Point position;
+    private int x = 0;
+    private int y = 0;
     private BufferedImage image;
 
     public VehicleObject(Vehicle vehicle) {
         this.vehicle = vehicle;
-        this.position = new Point();
-        this.position.x = (int) vehicle.GetX();
-        this.position.y = (int) vehicle.GetY();
+        this.x = (int) vehicle.GetX();
+        this.y = (int) vehicle.GetY();
         try {
             this.image = ImageIO.read(view.class.getResourceAsStream("pics/"+vehicle.getModel()+".jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void setPosition(int x, int y) {
-        position.x = x;
-        position.y = y;
+    public void setX(int newX) {
+        x = newX;
     }
+    public void setY(int newY){
+        y = newY;
+    }
+
     public int getX() {
-        return position.x;
+        return x;
     }
     public int getY() {
-        return position.y;
+        return y;
     }
     public BufferedImage getImage() {
         return image;
@@ -66,14 +69,14 @@ public class VehicleObject implements Drawable {
     public void StopEngine() {
         vehicle.StopEngine();
     }
-    public void flipDirection() {
+    public void invertDirection() {
         vehicle.TurnLeft();
         vehicle.TurnLeft();
     }
 
     public void moveit(){
-        position.x = (int) vehicle.GetX();
-        position.y = (int) vehicle.GetY();
+        x = (int) vehicle.GetX();
+        y = (int) vehicle.GetY();
     }
     public void move() {
         vehicle.Move();
