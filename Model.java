@@ -123,45 +123,37 @@ public class Model {
 
     void setTurboOn() {
         for (VehicleObject vehicleObject : vehicles) {
-            if (vehicleObject.getVehicle() instanceof Saab95) {
-                ((Saab95) vehicleObject.getVehicle()).setTurboOn();
-            }
+            vehicleObject.setTurboOn();
         }
     }
 
     void setTurboOff() {
         for (VehicleObject vehicleObject : vehicles) {
-            if (vehicleObject.getVehicle() instanceof Saab95) {
-                ((Saab95) vehicleObject.getVehicle()).setTurboOff();
-            }
+            vehicleObject.setTurboOff();
         }
     }
 
     void raiseBed() {
         for (VehicleObject vehicleObject : vehicles) {
-            if (vehicleObject.getVehicle() instanceof Scania) {
-                ((Scania) vehicleObject.getVehicle()).raisePlatform();
-            }
+            vehicleObject.raisePlatform();
         }
     }
 
     void lowerBed() {
         for (VehicleObject vehicleObject : vehicles) {
-            if (vehicleObject.getVehicle() instanceof Scania) {
-                ((Scania) vehicleObject.getVehicle()).lowerPlatform();
-            }
+            vehicleObject.lowerPlatform();
         }
     }
 
     void startAllCars(){
         for (VehicleObject vehicleObject : vehicles) {
-            vehicleObject.getVehicle().StartEngine();
+            vehicleObject.StartEngine();
         }
     }
 
     void stopAllCars(){
         for (VehicleObject vehicleObject : vehicles) {
-            vehicleObject.getVehicle().StopEngine();
+            vehicleObject.StopEngine();
         }
     }
     void addVehicle(VehicleObject vehicle) {

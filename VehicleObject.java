@@ -64,4 +64,25 @@ public class VehicleObject implements Drawable {
     public Vehicle getVehicle() {
         return vehicle;
     }
+
+    public void setTurboOn() {
+        if (vehicle instanceof Saab95) {
+            ((Saab95) vehicle).setTurboOn();
+        }
+    }
+    public void setTurboOff() {
+        if (vehicle instanceof Saab95) {
+            ((Saab95) vehicle).setTurboOff();
+        }
+    }
+    public void raisePlatform() {
+        if (vehicle instanceof Scania) {
+            ((Scania) vehicle).raisePlatform();
+        }
+    }
+    public void lowerPlatform() {
+        if (vehicle instanceof Scania) {
+            ((Scania) vehicle).lowerPlatform();
+        }
+    }
 }
