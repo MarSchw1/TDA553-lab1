@@ -1,17 +1,17 @@
 public class VehicleFactory {
-    public static Vehicle createVolvo(){
+    public static VehicleObject createVolvo(){
         Volvo240 volvo = new Volvo240();
-        return volvo;
+        return new VehicleObject(volvo);
     }
 
-    public static Vehicle createSaab(){
+    public static VehicleObject createSaab(){
         Saab95 saab = new Saab95();
-        return saab;
+        return new VehicleObject(saab);
     }
 
-    public static Vehicle createScania(){
+    public static VehicleObject createScania(){
         Scania scania = new Scania();
-        return scania;
+        return new VehicleObject(scania);
     }
 
 }

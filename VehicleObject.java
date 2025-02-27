@@ -5,9 +5,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class VehicleObject implements Drawable {
-    private Vehicle vehicle;
-    private int x = 0;
-    private int y = 0;
+    private final Vehicle vehicle;
+    private int x;
+    private int y;
     private BufferedImage image;
 
     public VehicleObject(Vehicle vehicle) {
@@ -20,13 +20,14 @@ public class VehicleObject implements Drawable {
             e.printStackTrace();
         }
     }
-    public void setX(int newX) {
+
+    public void setX(int newX){
         x = newX;
     }
+
     public void setY(int newY){
         y = newY;
     }
-
     public int getX() {
         return x;
     }

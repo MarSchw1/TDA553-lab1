@@ -35,8 +35,6 @@ public class Model {
     }
 
     public void initObjects(){
-        // TODO: Fixa så att VechicleFactory skapar VehicleObjects
-
         addVehicle(VehicleFactory.createSaab());
         addVehicle(VehicleFactory.createVolvo());
         addVehicle(VehicleFactory.createScania());
@@ -57,10 +55,10 @@ public class Model {
     }
 
     private void updateModel() {
-        for (VehicleObject vehicle : vehicles) {
-            vehicle.move();
-            tryLoading(vehicle);
-            chekVehicleInFrame(vehicle);
+        for (VehicleObject vehicleObject : vehicles) {
+            vehicleObject.move();
+            tryLoading(vehicleObject);
+            chekVehicleInFrame(vehicleObject);
             notifyObservers();
         }
     }
@@ -77,19 +75,20 @@ public class Model {
                 (y + 60) > wy && y < (wy + 100)) {
             if (vehicle.getVehicle() instanceof Volvo240 volvo) {
                 volvo240Workshop.load(volvo);
-                vehicle.setPosition(wx,wy);
+                vehicle.setX(wx);
+                vehicle.setY(wy);
             }
         }
     }
 
-    private void chekVehicleInFrame(Vehicle vehicle) {
-        if(vehicle.GetX() > 690){
-            vehicle.SetX(690);
+    private void chekVehicleInFrame(VehicleObject vehicle) {
+        if(vehicle.getX() > 690){
+            vehicle.setX(690);
             vehicle.StopEngine();
             vehicle.invertDirection();
             vehicle.StartEngine();
-        } else if (vehicle.GetX() < 0) {
-            vehicle.SetX(0);
+        } else if (vehicle.getX() < 0) {
+            vehicle.setX(0);
             vehicle.StopEngine();
             vehicle.invertDirection();
             vehicle.StartEngine();
@@ -114,55 +113,55 @@ public class Model {
     //calls the brake method for eavh car once
     void brake(int amount) {
         double gas = ((double) amount) / 100;
-        for (Vehicle car : vehicles) {
-            car.Brake(gas);
+        for (VehicleObject vehicleObject : vehicles) {
+            vehicleObject.getVehicle().Brake(gas);
         }
     }
 
     void setTurboOn() {
-        for (VehicleObject vehicle : vehicles) {
-            if (vehicle.getVehicle() instanceof Saab95) {
-                ((Saab95) vehicle).setTurboOn();
+        for (VehicleObject vehicleObject : vehicles) {
+            if (vehicleObject.getVehicle() instanceof Saab95) {
+                ((Saab95) vehicleObject.getVehicle()).setTurboOn();
             }
         }
     }
 
     void setTurboOff() {
-        for (VehicleObject vehicle : vehicles) {
-            if (vehicle.getVehicle() instanceof Saab95) {
-                ((Saab95) vehicle).setTurboOff();
+        for (VehicleObject vehicleObject : vehicles) {
+            if (vehicleObject.getVehicle() instanceof Saab95) {
+                ((Saab95) vehicleObject.getVehicle()).setTurboOff();
             }
         }
     }
 
     void raiseBed() {
-        for (Vehicle vehicle : vehicles) {
-            if (vehicle instanceof Scania) {
-                ((Scania) vehicle).raisePlatform();
+        for (VehicleObject vehicleObject : vehicles) {
+            if (vehicleObject.getVehicle() instanceof Scania) {
+                ((Scania) vehicleObject.getVehicle()).raisePlatform();
             }
         }
     }
 
     void lowerBed() {
-        for (Vehicle vehicle : vehicles) {
-            if (vehicle instanceof Scania) {
-                ((Scania) vehicle).lowerPlatform();
+        for (VehicleObject vehicleObject : vehicles) {
+            if (vehicleObject.getVehicle() instanceof Scania) {
+                ((Scania) vehicleObject.getVehicle()).lowerPlatform();
             }
         }
     }
 
     void startAllCars(){
-        for (Vehicle car : vehicles) {
-            car.StartEngine();
+        for (VehicleObject vehicleObject : vehicles) {
+            vehicleObject.getVehicle().StartEngine();
         }
     }
 
     void stopAllCars(){
-        for (Vehicle car : vehicles) {
-            car.StopEngine();
+        for (VehicleObject vehicleObject : vehicles) {
+            vehicleObject.getVehicle().StopEngine();
         }
     }
-    void addVehicle(Vehicle vehicle) {
+    void addVehicle(VehicleObject vehicle) {
         if (vehicles.size() < 10){
             vehicles.add(vehicle);
             notifyObservers();
