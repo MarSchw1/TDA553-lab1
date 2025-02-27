@@ -15,7 +15,7 @@ public class Model {
     ArrayList<VehicleObject> vehicles = new ArrayList<>(); // Tillhör modell-delen
 
     //Workshop<Volvo240> volvo240Workshop = new Workshop<Volvo240>(2,400,30);
-    WorkshopObject volvo240Workshop = VehicleFactory.createVolvoWorkshop(2,400,300);
+    WorkshopObject volvo240Workshop = VehicleFactory.createVolvoWorkshop(2,400,50);
 
     ArrayList<ModelUpdateObserver> observers = new ArrayList<ModelUpdateObserver>();
 

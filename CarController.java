@@ -51,7 +51,7 @@ public class CarController {
     }
 
     void stopAllCars(){
-        model.startAllCars();
+        model.stopAllCars();
     }
     void addCar() {
         model.addCar();

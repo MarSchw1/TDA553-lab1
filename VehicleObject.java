@@ -60,15 +60,19 @@ public class VehicleObject implements Drawable {
     public void Gas(double amount) {
         vehicle.Gas(amount);
     }
+
     public void Brake(double amount) {
         vehicle.Brake(amount);
     }
+
     public void StartEngine() {
         vehicle.StartEngine();
     }
+
     public void StopEngine() {
         vehicle.StopEngine();
     }
+
     public void invertDirection() {
         vehicle.TurnLeft();
         vehicle.TurnLeft();
