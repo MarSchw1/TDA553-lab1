@@ -61,7 +61,7 @@ public abstract class Vehicle implements Movable {
 
     // public method for increasing currentSpeed
     public void Gas(double amount) {
-        if (amount < 0 || amount > 1) {
+        if (amount < 0 && (!loaded) || amount > 1 && (!loaded)) {
             throw new IllegalArgumentException("Not accepted amount for gas, insert a value between 0 and 1");
         }
         IncrementSpeed(amount);

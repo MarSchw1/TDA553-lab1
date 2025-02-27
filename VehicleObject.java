@@ -5,14 +5,10 @@ import javax.imageio.ImageIO;
 
 public class VehicleObject implements Drawable {
     private final Vehicle vehicle;
-    private int x;
-    private int y;
     private BufferedImage image;
 
     public VehicleObject(Vehicle vehicle) {
         this.vehicle = vehicle;
-        this.x = (int) vehicle.GetX();
-        this.y = (int) vehicle.GetY();
         try {
             this.image = ImageIO.read(View.class.getResourceAsStream("pics/"+vehicle.getModel()+".jpg"));
         } catch (IOException e) {
@@ -21,42 +17,25 @@ public class VehicleObject implements Drawable {
     }
 
     public void setX(int newX){
-        x = newX;
+        vehicle.SetX(newX);
     }
 
     public void setY(int newY){
-        y = newY;
+        vehicle.SetY(newY);
     }
+
     public int getX() {
-        return x;
+        return (int) vehicle.GetX();
     }
+
     public int getY() {
-        return y;
+        return (int) vehicle.GetY();
     }
+
     public BufferedImage getImage() {
         return image;
     }
 
-    public void setTurboOn() {
-        if (vehicle instanceof setTurbo){
-            ((setTurbo) vehicle).setTurboOn();
-        }
-    }
-    public void setTurboOff() {
-        if (vehicle instanceof setTurbo){
-            ((setTurbo) vehicle).setTurboOff();
-        }
-    }
-    public void raisePlatform() {
-        if (vehicle instanceof HasPlatform){
-            ((HasPlatform) vehicle).raisePlatform();
-        }
-    }
-    public void lowerPlatform() {
-        if (vehicle instanceof HasPlatform){
-            ((HasPlatform) vehicle).lowerPlatform();
-        }
-    }
     public void Gas(double amount) {
         vehicle.Gas(amount);
     }
@@ -78,14 +57,10 @@ public class VehicleObject implements Drawable {
         vehicle.TurnLeft();
     }
 
-    public void moveit(){
-        x = (int) vehicle.GetX();
-        y = (int) vehicle.GetY();
-    }
     public void move() {
         vehicle.Move();
-        moveit();
     }
+
     public Vehicle getVehicle() {
         return vehicle;
     }

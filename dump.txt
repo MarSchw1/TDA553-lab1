@@ -20,3 +20,24 @@
         assertTrue(oldSpeed < newSpeed);
 
     }
+
+ public void setTurboOn() {
+        if (vehicle instanceof setTurbo){
+            ((setTurbo) vehicle).setTurboOn();
+        }
+    }
+    public void setTurboOff() {
+        if (vehicle instanceof setTurbo){
+            ((setTurbo) vehicle).setTurboOff();
+        }
+    }
+    public void raisePlatform() {
+        if (vehicle instanceof HasPlatform){
+            ((HasPlatform) vehicle).raisePlatform();
+        }
+    }
+    public void lowerPlatform() {
+        if (vehicle instanceof HasPlatform){
+            ((HasPlatform) vehicle).lowerPlatform();
+        }
+    }
