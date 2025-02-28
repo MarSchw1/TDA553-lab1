@@ -10,13 +10,15 @@
 * väldigt mycket knappar osv. Kan tunnas ut en del. Kanpparna och saker som vi ser kan flyttas till en Widgets klass. 
 
 # 3. Fler Designmönster
-## Obeserver
+### Obeserver
 Vi använder i nuläget inte Observer. En Observer skulle kunna användas för att göra förhållandent mellan modell och view mer abstrak i linje med OCP.
-## Factory Method
+### Factory Method
 Vi har använt en Factory method för att skapa fordonen men i just denna applikation skulle funktionaliteten kunna utökas för att även skapa en workshop.
-## State
+### State
 Vi använder oss inte av något state pattern just nu. Det skulle vara möjligt att använda ett state pattern på några ställen men vi anser att det inte lönar sig i applikationen då dess funktionalitet redan är begränsad. Exempelvis loadade bilar eller turbo. 
-## Composite
+### Composite
+Vi använder inte någto Composite Pattern i nulget. Det skulle eventuellt kunna användas för att hatera alla aktiva fordon gemensamt.
 
+Vi tror det blir lättare för oss att istället använda en form av Adapter Pattern för att gemensamt hantera de objekt som målas ut i appen. På så vis kan vi koppla fordon och repektive bilder till objekt som implementerar ett nytt interface "Drawable".  
 
 

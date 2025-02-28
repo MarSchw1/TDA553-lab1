@@ -19,6 +19,8 @@ Vi använder oss inte av något state pattern just nu. Det skulle vara möjligt 
 ### Composite
 Vi använder inte någto Composite Pattern i nulget. Det skulle eventuellt kunna användas för att hatera alla aktiva fordon gemensamt.
 
-Vi tror det blir lättare för oss att istället använda en form av Adapter Pattern för att gemensamt hantera de objekt som målas ut i appen. På så vis kan vi koppla fordon och repektive bilder till objekt som implementerar ett nytt interface "Drawable".  
+
+Vi tror det blir lättare för oss att istället använda en form av Adapter Pattern för att gemensamt hantera de objekt som målas ut i appen. På så vis kan vi koppla fordon och repektive bilder till objekt som implementerar ett nytt interface "Drawable".
+Men vi använder fortfarande en lista som vi itererar över när vi kör koden. 
 
 

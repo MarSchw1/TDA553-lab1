@@ -17,6 +17,7 @@ public class Model {
     //Workshop<Volvo240> volvo240Workshop = new Workshop<Volvo240>(2,400,30);
     WorkshopObject volvo240Workshop = VehicleFactory.createVolvoWorkshop(2,400,50);
 
+    //Todo: betdyder denna rad att alla som implementerar ModelUpdateObserver hamnar in Arraylisten "observers"?
     ArrayList<ModelUpdateObserver> observers = new ArrayList<ModelUpdateObserver>();
 
     public Model() {

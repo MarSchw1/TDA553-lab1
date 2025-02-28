@@ -15,7 +15,7 @@ public class View extends JPanel implements ModelUpdateObserver{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
-        }
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
