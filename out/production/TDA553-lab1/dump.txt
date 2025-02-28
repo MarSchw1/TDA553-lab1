@@ -1,0 +1,43 @@
+    @Test
+    void TestDecrementSpeed() {
+        saab.StartEngine();
+        for (int i = 1; i<5; i++){
+            saab.Gas(1);
+        }
+        double oldSpeed = saab.GetCurrentSpeed();
+        saab.DecrementSpeed(0.5);
+        double newSpeed = saab.GetCurrentSpeed();
+        assertTrue(oldSpeed > newSpeed);
+    }
+
+
+    @Test
+    void TestIncrementSpeed() {
+        saab.StartEngine();
+        double oldSpeed = saab.GetCurrentSpeed();
+        saab.IncrementSpeed(1);
+        double newSpeed = saab.GetCurrentSpeed();
+        assertTrue(oldSpeed < newSpeed);
+
+    }
+
+ public void setTurboOn() {
+        if (vehicle instanceof setTurbo){
+            ((setTurbo) vehicle).setTurboOn();
+        }
+    }
+    public void setTurboOff() {
+        if (vehicle instanceof setTurbo){
+            ((setTurbo) vehicle).setTurboOff();
+        }
+    }
+    public void raisePlatform() {
+        if (vehicle instanceof HasPlatform){
+            ((HasPlatform) vehicle).raisePlatform();
+        }
+    }
+    public void lowerPlatform() {
+        if (vehicle instanceof HasPlatform){
+            ((HasPlatform) vehicle).lowerPlatform();
+        }
+    }
